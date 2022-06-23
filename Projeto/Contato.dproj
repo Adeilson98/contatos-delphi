@@ -103,7 +103,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="..\Forms\U_Cadastro.pas">
-            <Form>Form1</Form>
+            <Form>frm_cadastro</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
