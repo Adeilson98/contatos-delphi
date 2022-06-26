@@ -28,7 +28,7 @@ object frm_cadastro: Tfrm_cadastro
     Width = 29
     Height = 13
     Caption = 'NOME'
-    FocusControl = DBEdit2
+    FocusControl = db_nome
   end
   object Label3: TLabel
     Left = 80
@@ -63,7 +63,7 @@ object frm_cadastro: Tfrm_cadastro
     DataSource = Ds_cadastro
     TabOrder = 0
   end
-  object DBEdit2: TDBEdit
+  object db_nome: TDBEdit
     Left = 80
     Top = 120
     Width = 392
@@ -79,6 +79,7 @@ object frm_cadastro: Tfrm_cadastro
     Height = 21
     DataField = 'TELEFONE'
     DataSource = Ds_cadastro
+    MaxLength = 13
     TabOrder = 2
   end
   object DBEdit4: TDBEdit
@@ -88,6 +89,7 @@ object frm_cadastro: Tfrm_cadastro
     Height = 21
     DataField = 'CELULAR'
     DataSource = Ds_cadastro
+    MaxLength = 14
     TabOrder = 3
   end
   object DBEdit5: TDBEdit
@@ -115,6 +117,7 @@ object frm_cadastro: Tfrm_cadastro
       Height = 25
       Caption = '&Novo'
       TabOrder = 0
+      OnClick = bt_novoClick
     end
     object bt_editar: TBitBtn
       Left = 117
@@ -123,6 +126,7 @@ object frm_cadastro: Tfrm_cadastro
       Height = 25
       Caption = '&Editar'
       TabOrder = 1
+      OnClick = bt_editarClick
     end
     object bt_deletar: TBitBtn
       Left = 198
@@ -131,6 +135,7 @@ object frm_cadastro: Tfrm_cadastro
       Height = 25
       Caption = '&Deletar'
       TabOrder = 2
+      OnClick = bt_deletarClick
     end
     object bt_gravar: TBitBtn
       Left = 279
@@ -139,6 +144,7 @@ object frm_cadastro: Tfrm_cadastro
       Height = 25
       Caption = '&Gravar'
       TabOrder = 3
+      OnClick = bt_gravarClick
     end
     object bt_cancelar: TBitBtn
       Left = 360
@@ -147,6 +153,7 @@ object frm_cadastro: Tfrm_cadastro
       Height = 25
       Caption = '&Cancelar'
       TabOrder = 4
+      OnClick = bt_cancelarClick
     end
     object bt_atualizar: TBitBtn
       Left = 441
@@ -155,6 +162,7 @@ object frm_cadastro: Tfrm_cadastro
       Height = 25
       Caption = '&Atualizar'
       TabOrder = 5
+      OnClick = bt_atualizarClick
     end
     object bt_sair: TBitBtn
       Left = 522
@@ -163,6 +171,7 @@ object frm_cadastro: Tfrm_cadastro
       Height = 25
       Caption = '&Sair'
       TabOrder = 6
+      OnClick = bt_sairClick
     end
   end
   object Panel2: TPanel
@@ -201,6 +210,7 @@ object frm_cadastro: Tfrm_cadastro
     Top = 56
   end
   object Q_cadastro: TFDQuery
+    Active = True
     Connection = Conexao
     SQL.Strings = (
       'SELECT * FROM contato'

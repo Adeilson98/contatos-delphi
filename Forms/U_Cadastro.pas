@@ -24,7 +24,7 @@ type
     Label1: TLabel;
     DBEdit1: TDBEdit;
     Label2: TLabel;
-    DBEdit2: TDBEdit;
+    db_nome: TDBEdit;
     Label3: TLabel;
     DBEdit3: TDBEdit;
     Label4: TLabel;
@@ -41,6 +41,13 @@ type
     bt_atualizar: TBitBtn;
     bt_sair: TBitBtn;
     DBNavigator1: TDBNavigator;
+    procedure bt_novoClick(Sender: TObject);
+    procedure bt_editarClick(Sender: TObject);
+    procedure bt_deletarClick(Sender: TObject);
+    procedure bt_gravarClick(Sender: TObject);
+    procedure bt_cancelarClick(Sender: TObject);
+    procedure bt_atualizarClick(Sender: TObject);
+    procedure bt_sairClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -53,5 +60,67 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure Tfrm_cadastro.bt_atualizarClick(Sender: TObject);
+begin
+  Q_cadastro.Refresh;
+end;
+
+procedure Tfrm_cadastro.bt_cancelarClick(Sender: TObject);
+begin
+  Q_cadastro.Cancel;
+end;
+
+procedure Tfrm_cadastro.bt_deletarClick(Sender: TObject);
+begin
+
+  if messagedlg('Deseja realmente excluir esse contato?', mtConfirmation, [mbOk, mbNo], 0)=mrOk then
+    begin
+      Q_cadastro.Delete;
+    end
+  else
+  abort;
+end;
+
+procedure Tfrm_cadastro.bt_editarClick(Sender: TObject);
+begin
+
+  if messagedlg('Deseja realmente editar esse contato?', mtConfirmation, [mbOk, mbNo], 0)=mrOk then
+    begin
+      Q_cadastro.Edit;
+    end
+  else
+  abort;
+
+end;
+
+procedure Tfrm_cadastro.bt_gravarClick(Sender: TObject);
+begin
+  Q_cadastro.Post;
+  Messagedlg('Contato salvo com sucesso!', mtInformation, [mbOK], 0);
+end;
+
+procedure Tfrm_cadastro.bt_novoClick(Sender: TObject);
+  var prox:integer;
+begin
+  Q_cadastro.Active:=true;
+  Q_cadastro.last;
+
+  prox:= Q_cadastroID_CONTATO.AsInteger + 1;
+  Q_cadastro.Append;
+  Q_cadastroID_CONTATO.AsInteger:=prox;
+  db_nome.setFocus;
+end;
+
+procedure Tfrm_cadastro.bt_sairClick(Sender: TObject);
+begin
+  if messagedlg('Deseja sair do sistema?', mtConfirmation, [mbOk, mbNo], 0) = mrOk then
+    begin
+      Application.Terminate;
+    end
+    else
+      abort;
+
+end;
 
 end.
