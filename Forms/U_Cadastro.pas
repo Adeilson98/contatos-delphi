@@ -41,6 +41,7 @@ type
     bt_atualizar: TBitBtn;
     bt_sair: TBitBtn;
     DBNavigator1: TDBNavigator;
+    bt_pesquisar: TBitBtn;
     procedure bt_novoClick(Sender: TObject);
     procedure bt_editarClick(Sender: TObject);
     procedure bt_deletarClick(Sender: TObject);
@@ -48,6 +49,7 @@ type
     procedure bt_cancelarClick(Sender: TObject);
     procedure bt_atualizarClick(Sender: TObject);
     procedure bt_sairClick(Sender: TObject);
+    procedure bt_pesquisarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -61,9 +63,12 @@ implementation
 
 {$R *.dfm}
 
+uses U_Pesquisa;
+
 procedure Tfrm_cadastro.bt_atualizarClick(Sender: TObject);
 begin
   Q_cadastro.Refresh;
+  Messagedlg('Contato atualizado com sucesso!', mtInformation, [mbOK], 0);
 end;
 
 procedure Tfrm_cadastro.bt_cancelarClick(Sender: TObject);
@@ -110,6 +115,19 @@ begin
   Q_cadastro.Append;
   Q_cadastroID_CONTATO.AsInteger:=prox;
   db_nome.setFocus;
+end;
+
+procedure Tfrm_cadastro.bt_pesquisarClick(Sender: TObject);
+begin
+Frm_pesquisa:=Tfrm_pesquisa.Create(self);
+Frm_pesquisa.ShowModal;
+
+try
+
+finally
+  Frm_pesquisa.Free;
+  Frm_pesquisa:=nil;
+end;
 end;
 
 procedure Tfrm_cadastro.bt_sairClick(Sender: TObject);

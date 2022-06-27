@@ -192,6 +192,15 @@ object frm_cadastro: Tfrm_cadastro
       VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
       TabOrder = 0
     end
+    object bt_pesquisar: TBitBtn
+      Left = 504
+      Top = 8
+      Width = 75
+      Height = 25
+      Caption = '&Pesquisa'
+      TabOrder = 1
+      OnClick = bt_pesquisarClick
+    end
   end
   object Conexao: TFDConnection
     Params.Strings = (
