@@ -17,41 +17,58 @@ object Frm_pesquisa: TFrm_pesquisa
     Left = 0
     Top = 0
     Width = 691
-    Height = 57
+    Height = 73
     Align = alTop
     Color = clGradientActiveCaption
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = -6
     object Label1: TLabel
-      Left = 24
-      Top = 11
+      Left = 216
+      Top = 12
       Width = 46
       Height = 13
       Caption = 'Pesquisar'
     end
+    object Label2: TLabel
+      Left = 40
+      Top = 12
+      Width = 65
+      Height = 13
+      Caption = 'Pesquisar por'
+    end
     object ed_pesquisa: TEdit
-      Left = 24
-      Top = 26
+      Left = 217
+      Top = 27
       Width = 225
-      Height = 25
+      Height = 21
       TabOrder = 0
     end
     object bt_pesquisar: TBitBtn
-      Left = 255
-      Top = 26
+      Left = 447
+      Top = 25
       Width = 75
       Height = 25
       Caption = '&Pesquisa'
       TabOrder = 1
+      OnClick = bt_pesquisarClick
     end
     object bt_imprimir: TBitBtn
-      Left = 336
-      Top = 26
+      Left = 528
+      Top = 25
       Width = 75
       Height = 25
       Caption = '&Imprimir'
       TabOrder = 2
+    end
+    object cb_opcao: TComboBox
+      Left = 40
+      Top = 27
+      Width = 145
+      Height = 21
+      TabOrder = 3
+      Items.Strings = (
+        'C'#243'digo'
+        'Nome')
     end
   end
   object Panel2: TPanel
@@ -63,16 +80,14 @@ object Frm_pesquisa: TFrm_pesquisa
     Color = clGradientActiveCaption
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = 232
-    ExplicitTop = 360
-    ExplicitWidth = 185
   end
   object DBGrid1: TDBGrid
     Left = 0
-    Top = 57
+    Top = 73
     Width = 691
-    Height = 294
+    Height = 278
     Align = alClient
+    DataSource = frm_cadastro.Ds_cadastro
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -85,6 +100,7 @@ object Frm_pesquisa: TFrm_pesquisa
     Top = 359
     Width = 224
     Height = 25
+    DataSource = frm_cadastro.Ds_cadastro
     VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
     TabOrder = 3
   end
